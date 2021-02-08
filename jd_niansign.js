@@ -336,15 +336,15 @@ function nian_collectProduceScore(timeout = 0){
         },
         body : `functionId=nian_collectProduceScore&body={"ss":"{\\"extraData\\":{\\"is_trust\\":true,\\"sign\\":\\"${sign}\\",\\"fpb\\":\\"\\",\\"time\\":${time},\\"encrypt\\":\\"3\\",\\"nonstr\\":\\"${nonstr}\\",\\"jj\\":\\"\\",\\"token\\":\\"d89985df35e6a2227fd2e85fe78116d2\\",\\"cf_v\\":\\"1.0.2\\",\\"client_version\\":\\"2.2.1\\",\\"buttonid\\":\\"jmdd-react-smash_0\\",\\"sceneid\\":\\"homePageh5\\"},\\"secretp\\":\\"${secretp}\\",\\"random\\":\\"${rnd}\\"}"}&client=wh5&clientVersion=1.0.0`
       }
-      console。log('\n第一行');
+      console.log('\n第一行');
       console.log(url.body)
       $.post(url, async (err, resp, data) => {
         try {
-          console。log('\n第二行');
+          console.log('\n第二行');
           console.log(data)
           data = JSON.parse(data);
           if (data.data.bizCode === -1002) {
-            console。log('\n第三行');
+            console.log('\n第三行');
             console.log('此账号暂不可使用脚本，脚本终止！')
             //merge.black = true;
             return ;
