@@ -214,7 +214,7 @@ function taskList() {
                     case 9: // 开宝箱
                       for (let i = vo.completedTimes; i <= vo.configTargetTimes; ++i) {
                         console.log(`去做任务：${vo.taskName}`)
-                        await doTask(vo.taskId)
+                        //await doTask(vo.taskId)
                         await completeTask(vo.taskId, vo.taskName)
                         await $.wait(1000);//延迟等待一秒
                       }
