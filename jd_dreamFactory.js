@@ -35,7 +35,7 @@ const $ = new Env('京喜工厂');
 const JD_API_HOST = 'https://m.jingxi.com';
 
 const notify = $.isNode() ? require('./sendNotify') : '';
-let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
+let jdNotify = false;//是否关闭通知，false打开通知推送，true关闭通知推送
 const randomCount = $.isNode() ? 20 : 5;
 let tuanActiveId = `6S9y4sJUfA2vPQP6TLdVIQ==`;
 const jxOpenUrl = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://wqsd.jd.com/pingou/dream_factory/index.html%22%20%7D`;
@@ -230,7 +230,7 @@ function taskList() {
                 if (vo.completedTimes >= vo.targetTimes) {
                   console.log(`任务：${vo.description}可完成`)
                   await completeTask(vo.taskId, vo.taskName)
-                  await $.wait(1000);//延迟等待一秒
+                  await $.wait(1800);//延迟等待一秒
                 } else {
                   switch (vo.taskType) {
                     case 2: // 逛一逛任务
@@ -238,9 +238,9 @@ function taskList() {
                     case 9: // 开宝箱
                       for (let i = vo.completedTimes; i <= vo.configTargetTimes; ++i) {
                         console.log(`去做任务：${vo.taskName}`)
-                        await doTask(vo.taskId)
+                        //await doTask(vo.taskId);//火爆不进行任务
                         await completeTask(vo.taskId, vo.taskName)
-                        await $.wait(1000);//延迟等待一秒
+                        await $.wait(1800);//延迟等待一秒
                       }
                       break
                     case 4: // 招工
@@ -579,7 +579,7 @@ function userInfo() {
                 message += `【当前等级】${data.user.userIdentity} ${data.user.currentLevel}\n`;
                 message += `【生产进度】${((production.investedElectric / production.needElectric) * 100).toFixed(2)}%\n`;
                 if (production.investedElectric >= production.needElectric) {
-                  $.log(`可以对方商品了`)
+                  $.log(`可以兑换商品了`)
                   // await exchangeProNotify()
                 }
               } else {
